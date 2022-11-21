@@ -3,6 +3,7 @@ from .models import post2
 import math
 from numpy import mean, var
 import numpy as np
+import random
 # Create your views here.
 
 def index(request):
@@ -106,10 +107,12 @@ def algoritmo_cbi(request):
     return render(request, 'app1/algoritmo_cbi.html', cont)
 
 def pre_posteriori(media1,media3,media4,var1,var2,var3,x,y,z):
+    var1 = random.randint(1, 10)
+    var2 = random.randint(1, 10)
+    var3 = random.randint(1, 10)
     p_num1 = (1/math.sqrt(2*math.pi*var1))* math.e*(pow(x-media1,2)/(2*var1))
     p_num3 = (1/math.sqrt(2*math.pi*var2))* math.e*(pow(y-media3,2)/(2*var2))
     p_num4 = (1/math.sqrt(2*math.pi*var3))* math.e*(pow(z-media4,2)/(2*var3))
-
     return (p_num1,p_num3,p_num4)
 
 def post_posteriori(para_evidencia, evidencia,letras):
