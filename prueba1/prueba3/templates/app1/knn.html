@@ -5,31 +5,34 @@
 {% block content %} 
 
     <h1 class="display-2">Algoritmo KNN</h1>
-
+    <div class="content container col-lg-10 mx-auto text-align-center">
+      <br>Paso 1: Ingresar el numero de K vecinas
+      <br>Paso 2: Ingrese las variables correspondientes para X1, X2 y X3</p>
+    </div>
     <form class="row gx-3 gy-2 align-items-center"  action="/algoritmo_knn/" method="post">
         {% csrf_token %}
         <div class="col-sm-2">
-          <label class="visually-hidden" for="specificSizeInputName">Name</label>
-          <input type="text" class="form-control" name="k" id="specificSizeInputX" placeholder="k">
+          <label class="visually-hidden" for="specificSizeInputName">K</label>
+          <input type="text" class="form-control" name="k" id="specificSizeInputX" placeholder="K">
         </div>
         <div class="col-sm-2">
-          <label class="visually-hidden" for="specificSizeInputName">Name</label>
-          <input type="text" class="form-control" name="x" id="specificSizeInputX" placeholder="x">
+          <label class="visually-hidden" for="specificSizeInputName">X1</label>
+          <input type="text" class="form-control" name="x" id="specificSizeInputX" placeholder="X1">
         </div>
         <div class="col-sm-2">
-            <label class="visually-hidden" for="specificSizeInputName">Name</label>
-            <input type="text" class="form-control" name="y" id="specificSizeInputY" placeholder="y">
+            <label class="visually-hidden" for="specificSizeInputName">X2</label>
+            <input type="text" class="form-control" name="y" id="specificSizeInputY" placeholder="X2">
           </div>
         <div class="col-sm-2">
-            <label class="visually-hidden" for="specificSizeInputName">Name</label>
-            <input type="text" class="form-control" name="z" id="specificSizeInputZ" placeholder="z">
+            <label class="visually-hidden" for="specificSizeInputName">X3</label>
+            <input type="text" class="form-control" name="z" id="specificSizeInputZ" placeholder="X3">
         </div>
         <div class="col-auto">
           <button type="submit" class="btn btn-primary">Clasificar</button>
         </div>
     </form>
     <br>
-    <table class="table table-success table-striped">
+    <table class="table table-dark">
         <thead>
             <th scope="col">Resultados</th>
         </thead>

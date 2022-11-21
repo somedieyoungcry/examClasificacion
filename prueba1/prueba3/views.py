@@ -8,7 +8,7 @@ import numpy as np
 def index(request):
     return render(request, 'app1/index.html', {})
 
-def post_list(request):
+"""def post_list(request):
     consulta = post2.objects.all()
     cont = {'datos':consulta}
     datos = list(post2.objects.all())
@@ -18,7 +18,19 @@ def post_list(request):
         suma.append(val)
     cont['suma']=suma
     # print(cont)
-    return render(request, 'app1/post_list.html', cont)
+    return render(request, 'app1/post_list.html', cont)"""
+    
+def muestra_datos(request):
+    consulta = post2.objects.all()
+    LisSum = suma(consulta)
+    contexto = zip(consulta, LisSum)
+    return render(request, 'app1/post_list.html', {'contexto':contexto})
+
+def suma(val):
+    listSum = []
+    for i in val:
+        listSum.append(i.x1 + i.x3 + i.x4)
+    return listSum
 
 def algoritmo_knn(request):
     if request.method == 'GET':
@@ -30,14 +42,11 @@ def algoritmo_knn(request):
         z = int(request.POST['z'])
         k = int(request.POST['k'])
         db = post2.objects.all()
-        print('obteniendo datos.....')
         print(k,x,y,z)
         distancia = []
         for i in range(len(db)):
             val = math.sqrt(((x-db[i].x1)**2)+((y-db[i].x3)**2)+((z-db[i].x4)**2))
-            #print(val)
             distancia.append((db[i].x2, val))
-        #print(distancia)
         cont = { 'dist': distancia}
         #calculando distancia
         listK= distancia[:k]
@@ -63,8 +72,6 @@ def algoritmo_cbi(request):
         # si la letra no esta en el arreglo que haga esto, si no ignorar
         if bd[i].x2 in letra:
             cont+=1
-            #print('ignorar letra')
-            #letra.append(bd[i].num2)
         else:
             valor = post2.objects.filter(x2=bd[i].x2)
             letra.append(bd[i].x2)
@@ -82,10 +89,6 @@ def algoritmo_cbi(request):
             media_num4=mean(suma_num4)
             varianza_num4=var(suma_num4)
             bd_final[bd[i].x2]=(media_num1,varianza_num1,media_num3,varianza_num3,media_num4,varianza_num4)
-            #print('suma 1: ', suma_num1)
-    #print(len(letra))
-    #print(bd_final)
-    #print(bd_final)
     para_evidencia = {}
     if request.method == 'POST':
         x = int(request.POST['x'])
@@ -93,7 +96,6 @@ def algoritmo_cbi(request):
         z = int(request.POST['z'])
         p_letra = 1/len(bd_final)
         for l in range(len(bd_final)):
-            #print(bd_final[letra[l]])
             para_evidencia[letra[l]]= pre_posteriori(bd_final[letra[l]][0],bd_final[letra[l]][2],bd_final[letra[l]][4],bd_final[letra[l]][1],bd_final[letra[l]][3],bd_final[letra[l]][5],x,y,z)
 
         evidcia = evidencia(para_evidencia,letra,p_letra)
@@ -101,9 +103,6 @@ def algoritmo_cbi(request):
         cont = {'letra': probabilidad}
     else:
         return render(request, 'app1/algoritmo_cbi.html', {})
-    #print(para_evidencia)
-    #print(evidcia)
-    #print(probabilidad)
     return render(request, 'app1/algoritmo_cbi.html', cont)
 
 def pre_posteriori(media1,media3,media4,var1,var2,var3,x,y,z):

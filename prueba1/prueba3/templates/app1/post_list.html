@@ -3,32 +3,32 @@
 {% block title%}Base de Datos{% endblock title %}
 
 {% block content %} 
-    <table class="table table-success table-striped-columns">
+    <table class="table table-dark">
         <thead>
               <tr>
-            
-                <th scope="col">X1</th>
-                <th scope="col">X2</th>
-                <th scope="col">X3</th>
-                <th scope="col">X4</th>
-                
+                <th scope="col">x1</th>
+                <th scope="col">x2</th>
+                <th scope="col">x3</th>
+                <th scope="col">x4</th>
+                <th scope="col">Suma</th>
               </tr>
         </thead>
         <tbody>
              
-              {%for dato in datos%}
+              {% for var,suma in contexto %}
               <tr id="tabla1">
   
-                <td>{{dato.x1}}</td>
-                <td>{{dato.x2}}</td>
-                <td>{{dato.x3}}</td>
-                <td>{{dato.x4}}</td>
+                <td>{{var.x1}}</td>
+                <td>{{var.x2}}</td>
+                <td>{{var.x3}}</td>
+                <td>{{var.x4}}</td>
+                <td>{{suma}}</td>
                 
               </tr>
               {% endfor %}
         </tbody>
     </table>
-    <table class="table table-dark table-striped">
+    <table class="table table-dark">
       <thead>
           <th scope="col">Resultados</th>
       </thead>
