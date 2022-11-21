@@ -1,0 +1,46 @@
+{% extends 'app1/base.html' %}
+
+{% block title%}KNN{% endblock title %}
+
+{% block content %} 
+
+    <h1 class="display-2">Algoritmo KNN</h1>
+
+    <form class="row gx-3 gy-2 align-items-center"  action="/algoritmo_knn/" method="post">
+        {% csrf_token %}
+        <div class="col-sm-2">
+          <label class="visually-hidden" for="specificSizeInputName">Name</label>
+          <input type="text" class="form-control" name="k" id="specificSizeInputX" placeholder="k">
+        </div>
+        <div class="col-sm-2">
+          <label class="visually-hidden" for="specificSizeInputName">Name</label>
+          <input type="text" class="form-control" name="x" id="specificSizeInputX" placeholder="x">
+        </div>
+        <div class="col-sm-2">
+            <label class="visually-hidden" for="specificSizeInputName">Name</label>
+            <input type="text" class="form-control" name="y" id="specificSizeInputY" placeholder="y">
+          </div>
+        <div class="col-sm-2">
+            <label class="visually-hidden" for="specificSizeInputName">Name</label>
+            <input type="text" class="form-control" name="z" id="specificSizeInputZ" placeholder="z">
+        </div>
+        <div class="col-auto">
+          <button type="submit" class="btn btn-primary">Clasificar</button>
+        </div>
+    </form>
+    <br>
+    <table class="table table-success table-striped">
+        <thead>
+            <th scope="col">Resultados</th>
+        </thead>
+        <tbody>
+          {%for val in dist%}
+            <tr id="tabla2">
+              <td>{{val}}</td>
+              <td>{{knn}}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+    </table>
+    {{knn}}
+{% endblock %} 

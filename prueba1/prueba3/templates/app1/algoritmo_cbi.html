@@ -1,0 +1,35 @@
+{% extends 'app1/base.html' %}
+
+{% block title%}CBI{% endblock title %}
+
+{% block content %} 
+
+    <h1 class="display-1">Algoritmo CBI</h1>
+    <p><em>Ingrese tres valores:</em></p>
+    <form class="row gx-3 gy-2 align-items-center"  action="/algoritmo_cbi/" method="post">
+        {% csrf_token %}
+        <div class="col-sm-2">
+          <label class="visually-hidden" for="specificSizeInputName">Name</label>
+          <input type="text" class="form-control" name="x" id="specificSizeInputX" placeholder="x">
+        </div>
+        <div class="col-sm-2">
+            <label class="visually-hidden" for="specificSizeInputName">Name</label>
+            <input type="text" class="form-control" name="y" id="specificSizeInputY" placeholder="y">
+          </div>
+        <div class="col-sm-2">
+            <label class="visually-hidden" for="specificSizeInputName">Name</label>
+            <input type="text" class="form-control" name="z" id="specificSizeInputZ" placeholder="z">
+        </div>
+        <div class="col-auto">
+          <button type="submit" class="btn btn-primary">Clasificar</button>
+        </div>
+    </form>
+    <br>
+    {%for val in letra%}
+      <div class="alert alert-primary" role="alert">
+        La letras es: {{val}}
+      </div>
+    {% endfor %}
+    
+    
+{% endblock %} 
