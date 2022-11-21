@@ -1,0 +1,58 @@
+{% extends 'app1/base.html' %}
+
+{% block title%}R. Logistic{% endblock title %}
+
+{% block content %} 
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Regresion</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    </head>
+    <li class="nav-item dropdown">
+        <a class="nav-link active dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Algoritmos</a>
+        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <li><a class="dropdown-item" href="{% url 'algoritmo_knn' %}">KNN</a></li>
+            <li><a class="dropdown-item" href="{% url 'algoritmo_cbi' %}">Naive Bayes</a></li>
+            <li><a class="dropdown-item" href="{% url 'algoritmo_rl'%}">Logistic regression</a></li>
+        </ul>
+    </li>
+    <body>
+        <div class="page-header text-center">
+          <h1>Logistic Regression</h1>
+        </div>
+
+        <div class="content container col-lg-10 mx-auto text-align-center">
+        <p><em>Add values for X1, X2 </em></p>
+        <div class="content container">
+          <div class="col-lg-10 mx-auto">
+            <form action="/equivalente/" method="GET" class="row g-3 needs-validation" novalidate>
+              <div class="col-md-6 position-relative">
+                <label for="validationTooltip02" class="form-label">Variable 1</label>
+                <input type="text" name ='x1' class="form-control" id="validationTooltip02" required>
+                <div class="valid-tooltip">
+                  Looks good!
+                </div>
+              </div>
+              <div class="col-md-6 position-relative">
+                <label for="validationTooltip02" class="form-label">Variable 2</label>
+                <input type="text" name ='x2' class="form-control" id="validationTooltip02" required>
+                <div class="valid-tooltip">
+                </div>
+              </div>
+              <div class="col-12">
+                <button class="btn btn-primary" type="submit" value="interpretar">Clasificar</button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js" integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk" crossorigin="anonymous"></script>
+    
+    </body>
+</html>
+{% endblock %} 

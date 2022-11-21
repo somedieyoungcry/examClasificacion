@@ -4,21 +4,21 @@
 
 {% block content %} 
 
-    <h1 class="display-1">Algoritmo CBI</h1>
-    <p><em>Ingrese tres valores:</em></p>
+    <h1 class="display-1">Naive Bayes</h1>
+    <p><em>Add 3 values for X1, X2, X3 </em></p>
     <form class="row gx-3 gy-2 align-items-center"  action="/algoritmo_cbi/" method="post">
         {% csrf_token %}
         <div class="col-sm-2">
           <label class="visually-hidden" for="specificSizeInputName">Name</label>
-          <input type="text" class="form-control" name="x" id="specificSizeInputX" placeholder="x">
+          <input type="text" class="form-control" name="x" id="specificSizeInputX" placeholder="X1">
         </div>
         <div class="col-sm-2">
             <label class="visually-hidden" for="specificSizeInputName">Name</label>
-            <input type="text" class="form-control" name="y" id="specificSizeInputY" placeholder="y">
+            <input type="text" class="form-control" name="y" id="specificSizeInputY" placeholder="X2">
           </div>
         <div class="col-sm-2">
             <label class="visually-hidden" for="specificSizeInputName">Name</label>
-            <input type="text" class="form-control" name="z" id="specificSizeInputZ" placeholder="z">
+            <input type="text" class="form-control" name="z" id="specificSizeInputZ" placeholder="X3">
         </div>
         <div class="col-auto">
           <button type="submit" class="btn btn-primary">Clasificar</button>
