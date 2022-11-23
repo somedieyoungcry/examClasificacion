@@ -132,6 +132,7 @@ def post_posteriori(para_evidencia, evidencia,letras):
         if rel[letras[j]] == maximo:
             letra = keys[j]
     return letra
+
 def evidencia(para_evidencia,letras,p_letra):
     rel=[]
     for i in range(len(para_evidencia)):
@@ -166,7 +167,7 @@ def interpretar(request):
         mensaje = "Te falto llenar o llenaste incorrectamente, recuerda que deben ser valores numericos"
     return HttpResponse(mensaje)
 
-def valorReferente(datos, x1, x2, b):
+def valorReferente(datos, x1, x2, b, constante):
     a1 = 0
     a2 = 0
     caracter = ''
@@ -175,8 +176,8 @@ def valorReferente(datos, x1, x2, b):
         caracter = i.x2
         a2 = i.x3
         break
-    salida = 1/(1 + np.exp(-(a1*x1 + a2*x2 + b)))
-    if salida > 0.5:
+    salida = 1/(1 + np.exp(-(a1*x1 + a2*x2 + constante)))
+    if salida >= 0.5:
         respuesta = f'El caracter obtenido es: {caracter}'
     else:
         respuesta = f'No hay caracter que haya podido encontrar: {caracter}'

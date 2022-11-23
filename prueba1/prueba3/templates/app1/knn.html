@@ -2,7 +2,7 @@
 
 {% block title%}KNN{% endblock title %}
 
-{% block content %} 
+{% block content %}
 
     <h1 class="display-2">Algoritmo KNN</h1>
     <div class="content container col-lg-10 mx-auto text-align-center">
@@ -32,18 +32,40 @@
         </div>
     </form>
     <br>
-    <table class="table table-dark">
-        <thead>
-            <th scope="col">Resultados</th>
-        </thead>
-        <tbody>
-          {%for val in dist%}
-            <tr id="tabla2">
-              <td>{{val}}</td>
-              <td>{{knn}}</td>
-            </tr>
-          {% endfor %}
-        </tbody>
-    </table>
-    {{knn}}
-{% endblock %} 
+    <table width="100%" border="0" cellpadding="8" cellspacing="0" class="table table-striped table-dark">
+      <tr>
+          <td>
+              <div align="center">
+                  <table width="80%" border="0" class="table table-striped table-dark">
+                      <tr>
+                          <th>Variable</th>
+                      </tr>
+
+                      {% for val in dist %}
+                      <tr>
+
+                          <td>{{val}}</td>
+
+                      </tr>
+                      {% endfor %}
+                  </table>
+              </div>
+          </td>
+          <td>
+              <div align="center">
+                  <table class="table table-striped table-dark">
+                      <tr>
+                          <th>Variable con la distancia mas cercana</th>
+                      </tr>
+
+                      {% for val in dist %}
+                      <tr>
+                          <td>{{knn}}</td>
+                      </tr>
+                      {% endfor %}
+                  </table>
+              </div>
+          </td>
+      </tr>
+  </table>
+{% endblock %}
